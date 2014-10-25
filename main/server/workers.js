@@ -2,11 +2,6 @@ Workers = function (workers) {
   var self = this;
   this.workers = [];
 
-  workers.forEach(function(url) {
-    var worker = DDP.connect(url);
-    self.workers.push(worker);
-  });
-
   this._nextWorker = 0;
 }
 
