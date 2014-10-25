@@ -36,7 +36,7 @@ Workers.prototype.getNextWorker = function() {
 };
 
 Workers.prototype.processVideo = function(args) {
-  args = _.toArray(args);
+  args = _.toArray(arguments);
   args.unshift('processVideo');
   var worker = this.getNextWorker();
   if(worker) {
