@@ -4,19 +4,7 @@ Workers = function (workers) {
 
   workers.forEach(function(url) {
     var worker = DDP.connect(url);
-    Tracker.autorun(function() {
-      var status = worker.status();
-      if(status.connected) {
-        console.log("worker connected: " + url);
-        self.workers.push(worker);
-      } else {
-        var index = self.workers.indexOf(worker);
-        if(index >= 0) {
-          console.log("worker disconnected: " + url);
-          self.workers.splice(index, 1);
-        }
-      }
-    });
+    self.workers.push(worker);
   });
 
   this._nextWorker = 0;
